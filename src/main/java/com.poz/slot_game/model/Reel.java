@@ -4,23 +4,21 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 
-public class reel {
-    public static void main(String[] args) {
-        for(List<String> reelStrip : reelStrips){
-            System.out.println(reelStrip);
-        }
-    }
-
+public class Reel {
     private static final record Paytable(String symbols, int count, int multiplier) {
     }
 
-    private static final Map<String, Integer> reelConfig = Map.of("Blank", 4,
-            "Cherry", 11,
-            "Lemon", 11,
-            "BAR", 6,
-            "Seven", 6,
-            "Wild", 1);
+    private  static  Map<String, Integer> reelConfig = new LinkedHashMap<>();
+    static {
+        reelConfig.put("Blank", 4);
+        reelConfig.put("Cherry", 11);
+        reelConfig.put("Lemon", 11);
+        reelConfig.put("BAR", 6);
+        reelConfig.put("Seven", 6);
+        reelConfig.put("Wild", 1);
+    }
 
     private static final int[][] Paylines = {
             {0, 0, 0, 0, 0},
@@ -44,11 +42,11 @@ public class reel {
             new Paytable("Lemon", 3, 3)
     );
 
-    public static List buildStrip() {
+    private  List<String> buildStrip() {
         List<List<String>> buckets = new ArrayList<>();
         reelConfig.forEach((sym, cnt) -> buckets.add(Collections.nCopies(cnt, sym)));
         int maxLength = Collections.max(reelConfig.values());
-        List symbols = new ArrayList<>();
+        List<String> symbols = new ArrayList<>();
         for (int i = 0; i < maxLength; i++) {
             for (List<String> bucket : buckets) {
                 if (bucket.size() > i) {
@@ -59,7 +57,8 @@ public class reel {
         return symbols;
     }
 
-    public static List<List<String>> reelStrips = List.of(
+    public final List<List<String>> reelStrips = List.of(
             buildStrip(),buildStrip(),buildStrip(),buildStrip(),buildStrip());
+
 }
 
