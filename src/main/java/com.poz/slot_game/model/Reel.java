@@ -7,10 +7,10 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 
 public class Reel {
-    private static final record Paytable(String symbols, int count, int multiplier) {
+    public record Paytable(String symbols, int count, int multiplier) {
     }
 
-    private  static  Map<String, Integer> reelConfig = new LinkedHashMap<>();
+    public  static  Map<String, Integer> reelConfig = new LinkedHashMap<>();
     static {
         reelConfig.put("Blank", 4);
         reelConfig.put("Cherry", 11);
@@ -20,14 +20,14 @@ public class Reel {
         reelConfig.put("Wild", 1);
     }
 
-    private static final int[][] Paylines = {
-            {0, 0, 0, 0, 0},
-            {1, 1, 1, 1, 1},
-            {2, 2, 2, 2, 2},
-            {0, 1, 2, 1, 0},
-            {2, 1, 0, 1, 2}
-    };
-    private static final List<Paytable> reelStrip = List.of(
+    public static final List<List<Integer>> Paylines = List.of(
+            List.of(0, 0, 0, 0, 0),
+            List.of(1, 1, 1, 1, 1),
+            List.of(2, 2, 2, 2, 2),
+            List.of(0, 1, 2, 1, 0),
+            List.of(2, 1, 0, 1, 2)
+    );
+    public static final List<Paytable> paytables = List.of(
             new Paytable("Seven", 5, 500),
             new Paytable("Seven", 4, 100),
             new Paytable("BAR", 5, 100),
@@ -42,7 +42,7 @@ public class Reel {
             new Paytable("Lemon", 3, 3)
     );
 
-    private  List<String> buildStrip() {
+    private static List<String> buildStrip() {
         List<List<String>> buckets = new ArrayList<>();
         reelConfig.forEach((sym, cnt) -> buckets.add(Collections.nCopies(cnt, sym)));
         int maxLength = Collections.max(reelConfig.values());
@@ -57,7 +57,7 @@ public class Reel {
         return symbols;
     }
 
-    public final List<List<String>> reelStrips = List.of(
+    public  static final List<List<String>> reelStrips = List.of(
             buildStrip(),buildStrip(),buildStrip(),buildStrip(),buildStrip());
 
 }
