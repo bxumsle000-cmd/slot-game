@@ -20,9 +20,6 @@ public class WalletService {
     }
 
     public void win(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("贏分不可為負，收到：" + amount);
-        }
         deposit += amount;
     }
 }
