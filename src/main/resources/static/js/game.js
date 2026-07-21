@@ -22,7 +22,8 @@ async function doSpin(){
 spinBtn.addEventListener("click",async ()=>{
     betBtn.disabled = true;
     const data = await doSpin();
-    await  renderSpin(data.outcome.grid);
+    depositEl.textContent = data.afterBet;
+    await renderSpin(data.outcome.grid);
     winScoreEl.textContent = data.win;
     depositEl.textContent = data.deposit;
     betBtn.disabled = false;

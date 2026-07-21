@@ -26,9 +26,10 @@ public class GameController {
     @PostMapping("/spin")
     public SpinResponse bet(@RequestParam int betAmount){
         wallet.bet(betAmount);
+        int afterBet = wallet.getDeposit();
         SpinOutCome outcome = spin.spinOnce();
         int winAmount = outcome.totalMultiplier() * betAmount /5 ;
         wallet.win(winAmount);
-        return new SpinResponse(wallet.getDeposit(),winAmount,outcome);
+        return new SpinResponse(afterBet,wallet.getDeposit(),winAmount,outcome);
     }
 }
