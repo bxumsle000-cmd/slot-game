@@ -3,15 +3,6 @@
 // 後端提供： GET /api/deposit  、 POST /api/spin
 // ============================================================
 
-// 後端符號名稱 → 畫面顯示。Blank 顯示空白。
-const SYMBOL_DISPLAY = {
-    Blank: '',
-    Cherry: '🍒',
-    Lemon: '🍋',
-    BAR: 'BAR',
-    Seven: '7️⃣',
-    Wild: '🃏'
-};
 
 // 常用元素先抓好
 const depositEl = document.getElementById('deposit');
@@ -23,7 +14,7 @@ const betBtn = document.getElementById('bet');
 
 async function doSpin(){
     const bet = parseInt(betAmountEl.textContent);
-    const res = await fetch(`api/spin?bet=${bet}`,{method : "post"});
+    const res = await fetch(`api/spin?betAmount=${bet}`,{method : "post"});
     const  data = await res.json();
     return data;
 }

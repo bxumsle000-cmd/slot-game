@@ -1,6 +1,5 @@
 package com.poz.slot_game.engine;
 
-import com.poz.slot_game.model.Paytable;
 import com.poz.slot_game.model.SpinOutCome;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ public class Spin {
 
     private Evaluation evaluation = new Evaluation();
 
-    public SpinOutCome spinOutCome() {
+    public SpinOutCome spinOnce() {
         // stops [5]
         Random rand = new Random();
         List<Integer> stops = Reel.reelStrips.stream()
