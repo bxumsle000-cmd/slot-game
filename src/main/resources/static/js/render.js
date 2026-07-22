@@ -25,7 +25,7 @@ function buildCell(symbol) {
     return cell
 }
 function renderSpin(grid) {
-    const spins = [...STRIPS].map((strip,col)=>{
+    const spins = [...STRIPS].map((strip,col)=>
     new Promise((resolve) => {
         strip.textContent = ""
         for(let row=0;row<3;row++){
@@ -46,7 +46,7 @@ function renderSpin(grid) {
         strip.addEventListener("transitionend",()=>{
             resolve()
         },{once:true})
-    })})
+    }))
     return Promise.all(spins)
 }
 
