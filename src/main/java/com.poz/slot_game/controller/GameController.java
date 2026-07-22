@@ -32,4 +32,10 @@ public class GameController {
         wallet.win(winAmount);
         return new SpinResponse(afterBet,wallet.getDeposit(),winAmount,outcome);
     }
+
+    @PostMapping("/reset")
+    public Map<String, Integer> reset() {
+        wallet.reset();
+        return Map.of("deposit", wallet.getDeposit());
+    }
 }

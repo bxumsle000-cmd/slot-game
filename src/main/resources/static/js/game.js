@@ -1,8 +1,10 @@
-// ============================================================
-// 前端遊戲邏輯：呼叫後端 API，把結果寫回畫面
-// 後端提供： GET /api/deposit  、 POST /api/spin
-// ============================================================
-
+// 每次重置重整回初始金額
+async function resetDeposit() {
+    const res = await fetch("/api/reset", { method: "POST" });
+    const data = await res.json();
+    depositEl.textContent = data.deposit;
+}
+resetDeposit();
 
 // 常用元素先抓好
 const depositEl = document.getElementById('deposit');
@@ -20,6 +22,11 @@ async function doSpin(){
 }
 
 spinBtn.addEventListener("click",async ()=>{
+    let originalDeposit = parseInt(depositEl.textContent);
+    let betAmount = parseInt(betAmountEl.textContent);
+    if( originalDeposit< betAmount){
+        resultEl.textContent ="餘額不足"
+    }else {
     betBtn.disabled = true;
     const data = await doSpin();
     depositEl.textContent = data.afterBet;
@@ -32,7 +39,10 @@ spinBtn.addEventListener("click",async ()=>{
         resultEl.textContent ="再接再厲"
     }
     betBtn.disabled = false;
-})
+}}
+    )
+
+
 
 
 
