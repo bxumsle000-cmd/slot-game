@@ -26,6 +26,11 @@ spinBtn.addEventListener("click",async ()=>{
     await renderSpin(data.outcome.grid);
     winScoreEl.textContent = data.win;
     depositEl.textContent = data.deposit;
+    if(data.win>0){
+        resultEl.textContent =`恭喜中獎: ${data.win}金幣`
+    }else {
+        resultEl.textContent ="再接再厲"
+    }
     betBtn.disabled = false;
 })
 
