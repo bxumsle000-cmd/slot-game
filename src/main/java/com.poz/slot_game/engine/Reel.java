@@ -1,16 +1,17 @@
 package com.poz.slot_game.engine;
 
-import com.poz.slot_game.model.Paytable;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.List;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.poz.slot_game.model.Paytable;
 
 public class Reel {
 
 
-    public  static  Map<String, Integer> reelConfig = new LinkedHashMap<>();
+    public  static final Map<String, Integer> reelConfig = new LinkedHashMap<>();
     static {
         reelConfig.put("Blank", 4);
         reelConfig.put("Cherry", 11);
