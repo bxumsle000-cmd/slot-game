@@ -4,47 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/reel.css">
     <title>Slot Game </title>
-    <style>
-        .reel-window {
-            width: 130px;
-            /* 放大後的單一 reel 寬度 */
-            height: 240px;
-            /* = 3 格 × 100px，剛好露出 3 個符號 */
-            overflow: hidden;
-            /* 超出窗口的符號被裁掉：動畫時符號從這裡捲進捲出 */
-            border: 2px solid #ffc107;
-            box-shadow: 0 0 8px rgba(158, 28, 11, 0.911)
-        }
 
-        /* reel-strip：真正會動的符號帶，之後對它做 translateY 位移就是「轉動」 */
-        .reel-strip {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* reel-cell：每一格符號，等高才好算位移量（轉一格 = 位移 100px） */
-        .reel-cell {
-            height: 80px;
-            /* 每格固定高度，動畫對齊的基本單位（放大後） */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            /* 符號字級跟著放大 */
-        }
-
-        /* dialog 的內建遮罩 ::backdrop：瀏覽器預設太淡，加深讓彈窗更聚焦 */
-        dialog::backdrop {
-            background: rgba(0, 0, 0, 0.6);
-        }
-    </style>
 </head>
 
 
-
-<body class="bg-primary-subtle pb-5 vh-100">
+<body class="bg-primary-subtle pb-5">
 <header class="d-flex justify-content-between align-content-center p-4 sticky-top"
         style="background-color: #020e20;">
     <span class="display-6">⭐ GOLD SLOT ⭐</span>
@@ -55,52 +22,49 @@
     </div>
 </header>
 <br><br>
-<main class="mx-auto my-5 p-5 border border-3 border-warning"
+<main class="mx-auto my-5 p-5 border border-3 border-warning
+                 d-flex justify-content-center gap-4 m-3"
       style="max-width: 720px ; box-shadow: 0 0 20px rgba(240, 200, 82, 0.911);">
-    <!-- 外層純 flex：5 個 reel 窗口並排、置中、彼此留間距 -->
-    <div class="d-flex justify-content-center gap-4 m-3 ">
-        <!-- 每欄 = 一個 reel 窗口；reel-strip 是之後要 translateY 捲動的符號帶 -->
-        <div class="reel-window">
-            <div class="reel-strip">
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-            </div>
+    <div class="reel-window">
+        <div class="reel-strip">
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
         </div>
-
-        <div class="reel-window">
-            <div class="reel-strip">
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-            </div>
-        </div>
-
-        <div class="reel-window">
-            <div class="reel-strip">
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-            </div>
-        </div>
-
-        <div class="reel-window">
-            <div class="reel-strip">
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-            </div>
-        </div>
-
-        <div class="reel-window">
-            <div class="reel-strip">
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-                <div class="reel-cell"></div>
-            </div>
-        </div>
-
     </div>
+
+    <div class="reel-window">
+        <div class="reel-strip">
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+        </div>
+    </div>
+
+    <div class="reel-window">
+        <div class="reel-strip">
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+        </div>
+    </div>
+
+    <div class="reel-window">
+        <div class="reel-strip">
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+        </div>
+    </div>
+
+    <div class="reel-window">
+        <div class="reel-strip">
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+            <div class="reel-cell"></div>
+        </div>
+    </div>
+
 </main>
 
 <div class="d-flex justify-content-center"><span class="fs-3" id="result">準備好就spin!</span></div>
@@ -179,9 +143,11 @@
     </div>
 </dialog>
 
-<script src="js/game.js"></script>
-<script src="js/render.js"></script>
-<script src="js/betConfig.js"></script>
+
+<script src="/js/reel.js"></script>
+<script src="/js/evaluation.js"></script>
+<script src="/js/game.js"></script>
+<script src="/js/render.js"></script>
 </body>
 
 
