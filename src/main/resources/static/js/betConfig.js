@@ -1,3 +1,4 @@
+// 案+會加50bet，最多500，超過500則回到 50。
 betBtn.addEventListener("click",()=>{
     let betAmount = parseInt(betAmountEl.textContent);
     if(betAmount<500){

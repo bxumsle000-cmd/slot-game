@@ -6,7 +6,7 @@ async function resetDeposit() {
 }
 resetDeposit();
 
-// 常用元素先抓好
+// 常用元素
 const depositEl = document.getElementById('deposit');
 const winScoreEl = document.getElementById('winScore');
 const betAmountEl = document.getElementById('betAmount');
@@ -14,6 +14,7 @@ const resultEl = document.getElementById('result');
 const spinBtn = document.getElementById('spin');
 const betBtn = document.getElementById('bet');
 
+// api/spin?betAmount=bet
 async function doSpin(){
     const bet = parseInt(betAmountEl.textContent);
     const res = await fetch(`api/spin?betAmount=${bet}`,{method : "post"});
@@ -21,6 +22,7 @@ async function doSpin(){
     return data;
 }
 
+// spin -> 扣款 -> 動畫 -> 更新餘額+顯示結果
 spinBtn.addEventListener("click",async ()=>{
     let originalDeposit = parseInt(depositEl.textContent);
     let betAmount = parseInt(betAmountEl.textContent);
