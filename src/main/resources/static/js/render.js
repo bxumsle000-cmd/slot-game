@@ -6,7 +6,7 @@ const SYMBOL_ICONS = {
     Lemon: "🍋",
     BAR: "BAR",
     Seven: "7️⃣",
-    Wild: "🃏",
+    Wild: "⭐",
 }
 
 // 畫面上的 5 條 reel-strip（querySelectorAll 依 HTML 順序 = 左到右）
