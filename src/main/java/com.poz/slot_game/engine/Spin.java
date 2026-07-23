@@ -18,22 +18,16 @@ public class Spin {
                 .map(strip -> rand.nextInt(strip.size()))
                 .collect(Collectors.toList());
 
-        // windows：以「每條 reel」為單位（直的一欄），每個元素是該 reel 由上到下 3 格 symbol
+        // 每條strip 套入 reelWindow
         // → 結構是 [reel0[3格], reel1[3格], reel2[3格], reel3[3格], reel4[3格]]（5欄 x 3格，column-major）
         List<List<String>> windows = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             List<String> window = reelWindow(Reel.reelStrips.get(i), stops.get(i));
             windows.add(window);
         }
-
-        // grid：把 windows 轉置成「每一列(row)」為單位（橫的一排）
-        // → 結構是 [row0[5格], row1[5格], row2[5格]]（3列 x 5格，row-major），方便之後用 payline 的 row index 查表
-        List<List<String>> grid = windowToGrid(windows);
-
-        // combo *5
+        List<List<String>> grid = windowToGrid(windows);                 // 轉置為grid
         List<List<String>> combos = comboByPayline(Reel.Paylines,grid);
         int totalMultiplier = 0;
-
         // paylineMultipliers + totalMultiplier
         List<Integer> paylineMultipliers = new ArrayList<>();
         for(List<String> combo: combos){
@@ -54,7 +48,7 @@ public class Spin {
         return out;
     }
 
-    // 將 column-major 的 windows（以 reel 為單位）轉置成 row-major 的 grid（以橫排 row 為單位）
+    // 將 column-major 的 windows (5*3)轉置成 row-major 的 grid（3*5），也是實際遊戲看到的畫面
     private List<List<String>> windowToGrid(List<List<String>> windows) {
         int rows = windows.size();
         int cols = windows.get(0).size();

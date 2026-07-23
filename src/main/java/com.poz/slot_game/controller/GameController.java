@@ -18,11 +18,13 @@ public class GameController {
     private Spin spin = new Spin();
     private Wallet wallet = new Wallet();
 
+    // 取得目前餘額
     @GetMapping("/deposit")
     public Map<String,Integer> deposit() {
         return Map.of("deposit", wallet.getDeposit());
     }
 
+    // 按下spin後，更新餘額
     @PostMapping("/spin")
     public SpinResponse bet(@RequestParam int betAmount){
         wallet.bet(betAmount);
@@ -33,6 +35,7 @@ public class GameController {
         return new SpinResponse(afterBet,wallet.getDeposit(),winAmount,outcome);
     }
 
+    // 重置初始餘額
     @PostMapping("/reset")
     public Map<String, Integer> reset() {
         wallet.reset();
