@@ -20,7 +20,7 @@ public class Evaluation {
         return null;
     }
 
-    // 替換 Wild
+    // 透過findMatchRule，找出將Wild替換成哪一個符號會有就好的賠率
     private List<String> replaceWild(List<String> combo) {
         if (!combo.contains("Wild")) {
             return combo;
@@ -40,7 +40,7 @@ public class Evaluation {
         }
         return beatCombo;
     }
-
+    // 先替換wild ，再找出最好的賠率。
     public int evaluatePayline(List<String> combo){
         List<String> bestCombo = replaceWild(combo);
         Paytable bestRule = findMatchRule(bestCombo);
