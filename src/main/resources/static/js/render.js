@@ -12,8 +12,8 @@ const SYMBOL_ICONS = {
 const STRIPS = document.querySelectorAll(".reel-strip")
 const CELL_HEIGHT = 80    // 每格高度(px)，必須跟 CSS 的 .reel-cell height 一致
 const FILLER_COUNT = 24   // 轉動時墊在結果下方的填充符號數，越多「轉的距離」越長
-const BASE_DURATION = 1.0 // 第 1 輪的動畫秒數
-const STAGGER = 0.25      // 每輪比前一輪多轉的秒數 → 做出左到右依序停止的節奏
+const BASE_DURATION = 5.0 // 第 1 輪的動畫秒數
+const STAGGER = 1.0     // 每輪比前一輪多轉的秒數 → 做出左到右依序停止的節奏
 const pool= Object.keys(SYMBOL_ICONS)  // symbols type
 
 // 轉換文字成符號， 並加入 reel-cell
