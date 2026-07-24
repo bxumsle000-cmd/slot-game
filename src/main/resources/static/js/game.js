@@ -29,6 +29,7 @@ spinBtn.addEventListener("click",async ()=>{
     if( originalDeposit< betAmount){
         resultEl.textContent ="餘額不足"
     }else {
+    spinBtn.disabled = true;
     betBtn.disabled = true;
     const data = await doSpin();
     depositEl.textContent = data.afterBet;
@@ -41,7 +42,8 @@ spinBtn.addEventListener("click",async ()=>{
         resultEl.textContent ="再接再厲"
     }
     betBtn.disabled = false;
-}}
+    spinBtn.disabled = false;
+    }}
     )
 
 

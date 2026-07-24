@@ -16,7 +16,7 @@ public class Reel {
         reelConfig.put("Lemon", 11);
         reelConfig.put("BAR", 6);
         reelConfig.put("Seven", 6);
-        reelConfig.put("Wild", 1);
+        reelConfig.put("Wild", 2);
     }
 
     // payline (0->第一行 1->第二行 2->第三行)
